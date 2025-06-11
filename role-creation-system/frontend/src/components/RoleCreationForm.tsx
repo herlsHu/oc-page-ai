@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent, useCallback, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -7,15 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Dice6 } from 'lucide-react'
 import { generateField } from '@/services/api'
 import React from 'react'
-
-// 防抖函数
-const debounce = <T extends (...args: any[]) => any>(fn: T, delay: number) => {
-  let timeoutId: NodeJS.Timeout
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => fn(...args), delay)
-  }
-}
 
 /**
  * RoleCreationFormMobile (重排版) — 水蜜桃粉主题 · 窄屏优化
@@ -166,8 +157,6 @@ export function RoleCreationForm() {
   // 更新容器样式，使用更合理的宽度控制
   const formContainerCls = 'w-full max-w-[800px] mx-auto px-3 sm:px-4'
   const fieldGroupCls = 'w-full space-y-3 sm:space-y-4'
-  const inputGroupCls = 'w-full flex flex-col sm:flex-row items-start gap-2'
-  const inputWrapperCls = 'flex-1 min-w-0 w-full'
 
   const FullInput = ({ diceField, ...p }: React.InputHTMLAttributes<HTMLInputElement> & { diceField?: keyof typeof form }) => {
     const [localValue, setLocalValue] = React.useState(p.value || '')
