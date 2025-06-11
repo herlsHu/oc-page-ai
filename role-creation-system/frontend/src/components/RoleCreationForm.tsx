@@ -308,11 +308,11 @@ export function RoleCreationForm() {
           onChange={e => update('language', e.target.value)}
           className={selectCls}
         >
-          <option value="">请选择语言</option>
-          {['中文', '英文', '日语', '其他'].map(l => (
-            <option key={l}>{l}</option>
-          ))}
-        </select>
+              <option value="">请选择语言</option>
+              {['中文', '英文', '日语', '其他'].map(l => (
+                <option key={l}>{l}</option>
+              ))}
+            </select>
       </div>
 
       {/* Voice */}
@@ -397,20 +397,20 @@ export function RoleCreationForm() {
             onChange={e => update('mbti', e.target.value)}
             className={selectCls}
           >
-            <option value="">选择 MBTI</option>
-            {MBTI.map(t => (
-              <option key={t}>{t}</option>
-            ))}
-          </select>
-        </div>
+                <option value="">选择 MBTI</option>
+                {MBTI.map(t => (
+                  <option key={t}>{t}</option>
+                ))}
+              </select>
+            </div>
         {form.mbti === '其他' && (
-          <FullInput
+                  <FullInput 
             className="mt-2"
-            value={form.otherMbti}
-            onChange={e => update('otherMbti', e.target.value)}
+                    value={form.otherMbti} 
+                    onChange={e => update('otherMbti', e.target.value)} 
             placeholder="自定义 MBTI"
             diceField="otherMbti"
-          />
+                  />
         )}
         <div className={fieldGroupCls}>
           <Label className={fieldLabelCls}>血型</Label>
@@ -428,32 +428,32 @@ export function RoleCreationForm() {
       </div>
 
       {/* Stance */}
-      <div className={fieldGroupCls}>
-        <Label className={fieldLabelCls}>立场</Label>
+        <div className={fieldGroupCls}>
+          <Label className={fieldLabelCls}>立场</Label>
         <select
           value={form.stance}
           onChange={e => update('stance', e.target.value)}
           className={selectCls}
         >
-          <option value="">选择立场</option>
-          {STANCES.map(s => (
-            <option key={s}>{s}</option>
-          ))}
-        </select>
+                <option value="">选择立场</option>
+                {STANCES.map(s => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
         {form.stance === '其他' && (
-          <FullInput
+                  <FullInput 
             className="mt-2"
-            value={form.otherStance}
-            onChange={e => update('otherStance', e.target.value)}
+                    value={form.otherStance} 
+                    onChange={e => update('otherStance', e.target.value)} 
             placeholder="自定义立场"
             diceField="otherStance"
-          />
-        )}
+                  />
+          )}
       </div>
 
       {/* === 核心必填：性格 / 外貌 === */}
       <div className="space-y-4 pt-4 border-t border-dashed border-pink-200">
-        <div className={fieldGroupCls}>
+      <div className={fieldGroupCls}>
           <Label className={fieldLabelCls}>性格 <span className="text-pink-400">*</span></Label>
           <FullTextarea
             value={form.personality}
@@ -551,11 +551,11 @@ export function RoleCreationForm() {
         {form.examples.map((ex, i) => (
           <div key={i} className="relative w-full flex items-center gap-2">
             <FullInput
-              value={ex}
-              onChange={e => updateExample(i, e.target.value)}
+                value={ex}
+                onChange={e => updateExample(i, e.target.value)}
               placeholder={`示例 ${i + 1}`}
               className="flex-1"
-            />
+              />
             <ExampleDiceButton index={i} />
           </div>
         ))}
@@ -612,23 +612,23 @@ export function RoleCreationForm() {
             >
               语言习惯
             </TabsTrigger>
-          </TabsList>
-          <TabsContent value="basic">
+        </TabsList>
+        <TabsContent value="basic">
             <div className={formContainerCls}>
-              <BasicSetting />
-            </div>
-          </TabsContent>
-          <TabsContent value="supplement">
+            <BasicSetting />
+          </div>
+        </TabsContent>
+        <TabsContent value="supplement">
             <div className={formContainerCls}>
-              <SupplementSetting />
-            </div>
-          </TabsContent>
-          <TabsContent value="language">
+            <SupplementSetting />
+          </div>
+        </TabsContent>
+        <TabsContent value="language">
             <div className={formContainerCls}>
-              <LanguageHabit />
-            </div>
-          </TabsContent>
-        </Tabs>
+            <LanguageHabit />
+          </div>
+        </TabsContent>
+      </Tabs>
       </div>
 
       {/* Save button */}
