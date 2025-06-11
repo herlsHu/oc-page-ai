@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # 确保这里是你的主分支名，根据之前的检查，是 master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: cd role-creation-system/frontend && npm install
+
+      - name: Build
+        run: cd role-creation-system/frontend && npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: role-creation-system/frontend/dist
+          branch: gh-pages
+          clean: true # 确保部署前清空 gh-pages 分支的内容 
